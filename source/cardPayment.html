@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PanIndia Pass - Payment</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        #payment {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <section id="payment">
+        <h2>Payment</h2>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                <span class="error-message" id="card-number-error"></span>
+            </div>
+            <div class="form-group">
+                <label for="expiry-date">Expiry Date</label>
+                <input type="text" id="expiry-date" placeholder="MM/YYYY">
+                <span class="error-message" id="expiry-date-error"></span>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="123">
+                <span class="error-message" id="cvv-error"></span>
+            </div>
+            <button type="submit">Pay Now</button>
+        </form>
+    </section>
+
+     
+    <footer>
+        <p>&copy; 2024 PanIndia Pass. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for handling payment form submission
+        const paymentForm = document.getElementById('payment-form');
+
+        paymentForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get payment details from the form
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+
+            // Perform validation on payment details
+            const cardNumberError = document.getElementById('card-number-error');
+            const expiryDateError = document.getElementById('expiry-date-error');
+            const cvvError = document.getElementById('cvv-error');
+
+            let isValid = true;
+
+            if (cardNumber.length < 16 || cardNumber.length >16) {
+                cardNumberError.textContent = 'Please enter a valid card number';
+                isValid = false;
+            } else {
+                cardNumberError.textContent = '';
+            }
+
+            if (!expiryDate || !/^\d{2}\/\d{4}$/.test(expiryDate)) {
+                expiryDateError.textContent = 'Please enter a valid expiry date (MM/YYYY)';
+                isValid = false;
+            } else {
+                expiryDateError.textContent = '';
+            }
+
+            if (!cvv || cvv.length < 3) {
+                cvvError.textContent = 'Please enter a valid CVV';
+                isValid = false;
+            } else {
+                cvvError.textContent = '';
+            }
+
+            // If validation passes, process payment
+            if (isValid) {
+                // Perform payment processing and redirect user to confirmation page
+                // Example: window.location.href = 'payment-confirmation.html';
+                alert('Payment successful! ');
+            }
+        });
+    </script>
+</body>
+
+</html>

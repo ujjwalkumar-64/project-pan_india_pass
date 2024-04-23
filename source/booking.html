@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Booking</title>
+    <style>
+         
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="tel"],input[type="number"],#paymentMethod {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Booking</h2>
+        <form id="paymentForm" action="/process_payment" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+            
+            <!-- <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="">Select Payment Method</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="debit_card">Debit Card</option>
+                <option value="gpay" >Google Pay</option>
+            </select> -->
+            
+            <button type="submit" id="bookPaymentButton">Book Payment</button>
+        </form>
+    </div>
+    
+    <!-- <script>
+    document.getElementById("bookPaymentButton").addEventListener("click", function() {
+        
+        const formData = new FormData(document.getElementById("paymentForm"));
+       
+        const jsonData = {};
+        formData.forEach((value, key) => { jsonData[key] = value; });
+
+        
+        fetch("/process_payment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(jsonData)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Payment page redirect!");
+                window.location.href = 'cardPayment'
+                  
+            } else {
+                console.error("Error booking payment");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+        
+        
+    });
+
+   
+</script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const paymentForm = document.getElementById('paymentForm');
+
+        if (paymentForm) {
+            paymentForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const amount = document.getElementById('amount').value;
+                const phone = document.getElementById('phone').value;
+                // const payment = document.getElementById('paymentMethod').value;
+
+                try {
+                    const response = await fetch('http://localhost:5500/process_payment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name,email, amount,phone })
+                    });
+
+                    if (response.ok) {
+                        
+                        console.log('thank you for payment!');
+                        alert("thank you for payment!")
+                        window.location.href = '/index.html';
+
+                    } else {
+                        console.error('payment failed:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Error during payment:', error.message);
+                }
+            });
+        }
+    });
+</script>
+ 
+</body>
+</html>

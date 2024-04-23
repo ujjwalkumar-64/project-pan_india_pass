@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+     <!-- font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+        
+     <!-- css -->
+      <style>
+         body{
+                 font-family: 'Days One', sans-serif;
+                 background-color: rgb(134, 232, 243);
+                  
+             }
+             h1{
+                 color: rgb(2, 42, 78);
+                 
+             }
+        a{
+            text-decoration: none;
+        }
+        @media screen and (max-width: 700px) {
+                h1{
+                    text-align: center;
+                }
+   }
+   
+
+         
+      </style>
+</head>
+<body>
+    <a href="/index.html"><h1>PAN INDIA PASS </h1></a>
+    <hr>
+    <h3>WELCOME</h3>
+    <h4>Name :
+        <script>
+            document.write(localStorage.getItem("name"));
+        </script>
+    </h4>
+    <h4>
+        Your Email :
+        <script>
+            document.write(localStorage.getItem("email"));
+        </script>
+    </h6>
+    <button onclick="logout()">Log Out</button>
+
+</body>
+<script>
+    function logout(){
+        localStorage.removeItem("name");
+        localStorage.removeItem("email");
+        localStorage.removeItem("username");
+        alert("logout succesful")
+        window.location.href="../index.html";
+    }
+</script>
+</html>

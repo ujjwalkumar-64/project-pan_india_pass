@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact </title>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+
+    <!-- css -->
+     <style>
+        body{
+                font-family: 'Days One', sans-serif;
+                background-color: rgb(134, 232, 243);
+                 
+            }
+            h1{
+                color: rgb(2, 42, 78);   
+                  
+
+            }
+        a{
+            text-decoration: none;
+        }
+        @media screen and (max-width: 700px) {
+                h1{
+                    text-align: center;
+                }
+   }
+     </style>
+</head>
+<body>
+    <a href="/index.html"><h1>PAN INDIA PASS </h1></a> 
+    
+    <hr>
+    <h3>Fill your detail</h3>
+    <form action="/contact" id="myform" method="post">
+        <div>
+             <label for="my name">Name:</label>
+             <input type="text" name="my name" id="name" required>
+        </div>
+        <br>
+        
+       <div>
+            <label for="my email">Email:</label> 
+            <input type="email" name="my email" id="email" required > 
+       </div>
+    
+        <br>
+        <div>
+            <label for="ph number">Phone:</label>
+             <input type="number" name="ph number" id="phone" required>
+        </div>
+        <br>
+        <div>
+            <label for="artist name">Artist:</label>
+             <input type="text" name="artist name" id="artistName" required>
+        </div>
+        <br>
+        <div>
+            <label for="budget">Budget:</label>
+             <input type="number" name="budget"   id="budget" required>
+        </div>
+        <br>
+       
+         
+       <div>
+        <button type="submit"   value="submit now">  submit now</button>
+        <button type="reset" value="reset now">reset now</button>
+       </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const myform = document.getElementById('myform');
+    
+            if (myform) {
+                myform.addEventListener('submit', async function(event) {
+                    event.preventDefault();
+    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const artistName = document.getElementById('artistName').value;
+                    const budget = document.getElementById('budget').value;
+    
+                    try {
+                        const response = await fetch('http://localhost:5500/contact', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ name,email,phone,artistName,budget })
+                        });
+    
+                        if (response.ok) {
+                            
+                            console.log('thank you for contact!');
+                            alert("thank you for contacting !")
+                            window.location.href = '/index.html';
+    
+                        } else {
+                            console.error('contact failed:', response.statusText);
+                        }
+                    } catch (error) {
+                        console.error('Error during contact submit:', error.message);
+                    }
+                });
+            }
+        });
+    </script>
+
+        
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arijit Singh Shows - PanIndiaPass</title>
+
+         
+    <!-- css -->
+     <style>
+
+     body {
+       
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.show {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.show h2 {
+    margin-top: 0;
+}
+
+.show p {
+    margin: 5px 0;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+     </style>
+
+
+</head>
+<body>
+    <div class="container">
+        <h1>DJ Sartex India Tour</h1>
+        
+        <div id="showsContainer">
+            <div class="show">
+                <h2>Concert in Mumbai</h2>
+                <p>Date: April 30, 2024</p>
+                <p>Venue: XYZ Stadium</p>
+                <button onclick="bookTicket('Mumbai')">Book Tickets</button>
+            </div>
+
+            <div class="show">
+                <h2>Live Performance in Delhi</h2>
+                <p>Date: May 5, 2024</p>
+                <p>Venue: ABC Auditorium</p>
+                <button onclick="bookTicket('Delhi')">Book Tickets</button>
+            </div>
+
+            <div class="show">
+                <h2>Get Ready Lucknow</h2>
+                <p>Date: May 12, 2024</p>
+                <p>Venue: Phoenix Palassio</p>
+                <button onclick="bookTicket('Lucknow')">Book Tickets</button>
+            </div>
+
+            <div class="show">
+                <h2>Sartex's magic in Banglore</h2>
+                <p>Date: May 19, 2024</p>
+                <p>Venue: Phoenix Mall of Asia</p>
+                <button onclick="bookTicket('Banglore')">Book Tickets</button>
+            </div>
+        </div>
+    </div>
+
+     <script>
+        function bookTicket(city) {
+    alert(`Booking tickets for the show in ${city}`);
+    // Implement your booking logic here (e.g., redirect to a booking page)
+    window.location.href = '../booking.html'; // Example: Redirect to a booking page
+}
+     </script>
+</body>
+</html>
