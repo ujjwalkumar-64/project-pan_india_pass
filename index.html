@@ -57,7 +57,7 @@
             <a href="#comedy"><img class="slideimage" src="./item/comedy show.jpg" alt="comedy show"></a>
             <a href="#music"><img class="slideimage" src="./item/music contest.jpg" alt="Music concert"></a>
             <a href="#edm"><img class="slideimage" src="./item/edm.jpg" alt="Edm Night"></a>
-            <!-- <a href="#sports"><img class="slideimage" src="./item/sports.jpg" alt="sports"></a> -->
+             
         </section>
     </div>
     
@@ -312,7 +312,7 @@
     
 
     <script src="index.js"></script>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const signupForm = document.getElementById('signupForm');
@@ -370,7 +370,7 @@
                 if (response.ok) {
                      
                     alert("Login successful!");
-                    window.location.href = '/index.html'; 
+                    window.location.href = './source/account.html'; 
                 } else if (response.status === 401) {
                     alert("Invalid credentials");
                 } else {
